@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: $0 <log-directory> [archive-directory] [-v|--verbose]"
+    echo "Usage: $0 <log-directory> [archive-directory] [-v|--verbose] [keyword]"
     echo "  <log-directory>      Path to the directory containing logs"
     echo "  [archive-directory]  (Optional) Output directory for archives (default: 'archives')"
     echo "  -v, --verbose        Enable verbose mode for detailed output"
@@ -15,8 +15,14 @@ fi
 LOG_DIR="$1"
 ARCHIVE_DIR="${2:-archives}"
 VERBOSE=0
-if [ "$3" == "-v" ] || [ "$3" == "--verbose" ]; then
-    VERBOSE=1
+KEYWORD="$4"
+
+FILTERED_DIR="/tmp/filtered_logs_$$"
+
+if [ -n "$KEYWORD" ]; then
+    mkdir -p "$FILTERED_DIR"
+    grep -r "$KEYWORD" "$LOG_DIR" > "$FILTERED_DIR/filtered_logs.txt"
+    LOG_DIR="$FILTERED_DIR"
 fi
 
 if [ ! -d "$LOG_DIR" ]; then
