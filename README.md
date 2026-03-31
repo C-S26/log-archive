@@ -35,6 +35,11 @@ Enable Verbose Mode:
 
     ./log_archiver.sh /path/to/logs /path/to archives --verbose  
 
+With keyword filtering
+
+     ./log_archiver.sh /path/to/logs archives -v error
+
+
 #### Output
 - Compressed File: Stored in the archive directory, e.g., `archives/logs_archive_YYYYMMDD_HHMMSS.tar.gz`.
 - Log File: Details logged in `archives/archive_log.txt`.
