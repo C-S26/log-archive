@@ -9,7 +9,15 @@ Step 1: Download the Script
     git clone https://github.com/C-S23/log-archive.git
     cd log-archive
 
-Make the script executable:
+## Features
+- Compress logs into timestamped archives
+- Supports custom archive directory
+- Verbose mode for detailed output
+- Logs archive operations with time, size, and duration
+- Keyword-based log filtering (NEW)
+
+
+To make the script executable:
 
     chmod +x log_archiver.sh
 
